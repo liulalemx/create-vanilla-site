@@ -1,0 +1,30 @@
+{
+  "name": "create-static-site",
+  "version": "0.0.1",
+  "description": "The best way to start a modern static site",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liulalemx/create-static-site.git"
+  },
+  "main": "dist/index..js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "start:watch": "nodemon --watch src --exec ts-node src/index.ts",
+    "build": "tsc"
+  },
+  "packageManager": "yarn@3.3.1",
+  "devDependencies": {
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "chalk-animation": "^2.0.3",
+    "figlet": "^1.5.2",
+    "gradient-string": "^2.0.2",
+    "inquirer": "^9.1.4",
+    "nanospinner": "^1.1.0"
+  }
+}
