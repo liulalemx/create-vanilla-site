@@ -9,7 +9,15 @@ import chalkAnimation from "chalk-animation";
 import figlet from "figlet";
 import { createSpinner } from "nanospinner";
 
+interface CliOptions {
+  projectName: string;
+  templateName: string;
+  templatePath: string;
+  tartgetPath: string;
+}
+
 const __dirname = path.resolve();
+const CURR_DIR = process.cwd();
 const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
 
 async function welcome(callback: any) {
@@ -39,21 +47,49 @@ function generateTemplate() {
 
   const QUESTIONS = [
     {
+      name: "name",
+      type: "input",
+      message: "Project name:",
+    },
+    {
       name: "template",
       type: "list",
       message: "What project template would you like to generate?",
       choices: CHOICES,
     },
-    {
-      name: "name",
-      type: "input",
-      message: "Project name:",
-    },
   ];
 
   inquirer.prompt(QUESTIONS).then((answers) => {
-    console.log(answers);
+    const templateChoice = answers["template"];
+    const projectName = answers["name"];
+    const templatePath = path.join(__dirname, "templates", templateChoice);
+    const tartgetPath = path.join(CURR_DIR, projectName);
+    const options: CliOptions = {
+      projectName,
+      templateName: templateChoice,
+      templatePath,
+      tartgetPath,
+    };
+    console.log(options);
+
+    if (!createProject(tartgetPath)) {
+      return;
+    }
   });
+}
+
+function createProject(projectPath: string) {
+  if (fs.existsSync(projectPath)) {
+    console.log(
+      chalk.red(
+        `Folder ${projectPath} already exists. Delete or use another name.`
+      )
+    );
+    return false;
+  }
+  fs.mkdirSync(projectPath);
+
+  return true;
 }
 
 console.clear();
