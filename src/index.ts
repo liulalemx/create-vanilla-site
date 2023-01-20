@@ -22,7 +22,7 @@ const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
 
 async function welcome(callback: any) {
   figlet(
-    "Create Static Site",
+    "Create Vanilla Site",
     { font: "Larry 3D" },
     async function (err: any, data: any) {
       if (err) {
@@ -35,7 +35,7 @@ async function welcome(callback: any) {
       await sleep();
       introTitle.stop();
       console.log(
-        chalk.blue.bold("The best way to start a modern static site \n")
+        chalk.blue.bold("The best way to start a modern vanilla site \n")
       );
       callback();
     }
@@ -49,12 +49,12 @@ function generateTemplate() {
     {
       name: "name",
       type: "input",
-      message: "Project name:",
+      message: "What will your project be called?:",
     },
     {
       name: "template",
       type: "list",
-      message: "What project template would you like to generate?",
+      message: "Will you be using JavaScript or TypeScript?",
       choices: CHOICES,
     },
   ];

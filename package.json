@@ -1,7 +1,7 @@
 {
-  "name": "create-static-site",
+  "name": "create-vanilla-site",
   "version": "0.0.1",
-  "description": "The best way to start a modern static site",
+  "description": "The best way to start a modern vanilla site",
   "license": "MIT",
   "type": "module",
   "repository": {

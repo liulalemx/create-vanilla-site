@@ -618,9 +618,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"create-static-site@workspace:.":
+"create-vanilla-site@workspace:.":
   version: 0.0.0-use.local
-  resolution: "create-static-site@workspace:."
+  resolution: "create-vanilla-site@workspace:."
   dependencies:
     "@types/chalk-animation": ^1.6.1
     "@types/figlet": ^1.5.5
