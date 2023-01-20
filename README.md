@@ -1,1 +1,1 @@
-# create-static-site
+# create-vanilla-site
