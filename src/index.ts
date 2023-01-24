@@ -7,6 +7,7 @@ import inquirer from "inquirer";
 // import gradient from "gradient-string";
 import chalkAnimation from "chalk-animation";
 import figlet from "figlet";
+import * as shell from "shelljs";
 import { createSpinner } from "nanospinner";
 
 interface CliOptions {
@@ -78,6 +79,7 @@ function generateTemplate() {
     }
 
     createDirectoryContents(templatePath, projectName);
+    postProcess(options);
   });
 }
 
@@ -124,6 +126,19 @@ function createDirectoryContents(templatePath: string, projectName: string) {
       );
     }
   });
+}
+
+function postProcess(options: CliOptions) {
+  const isNode = fs.existsSync(path.join(options.templatePath, "package.json"));
+  if (isNode) {
+    shell.cd(options.tartgetPath);
+    const result = shell.exec("yarn install");
+    if (result.code !== 0) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
 console.clear();
