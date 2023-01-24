@@ -2,6 +2,7 @@
 
 import * as fs from "fs";
 import * as path from "path";
+import { fileURLToPath } from "url";
 import chalk from "chalk";
 import inquirer from "inquirer";
 // import gradient from "gradient-string";
@@ -17,10 +18,11 @@ interface CliOptions {
   tartgetPath: string;
 }
 
-const __dirname = path.resolve();
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const CURR_DIR = process.cwd();
 const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
 const SKIP_FILES = ["node_modules", ".template.json"];
+const CHOICES = fs.readdirSync(path.join(__dirname, "templates"));
 
 async function welcome(callback: any) {
   figlet(
@@ -45,8 +47,6 @@ async function welcome(callback: any) {
 }
 
 function generateTemplate() {
-  const CHOICES = fs.readdirSync(path.join(__dirname, "templates"));
-
   const QUESTIONS = [
     {
       name: "name",
@@ -128,17 +128,13 @@ function createDirectoryContents(templatePath: string, projectName: string) {
   });
 }
 
-function postProcess(options: CliOptions) {
-  const isNode = fs.existsSync(path.join(options.templatePath, "package.json"));
-  if (isNode) {
-    shell.cd(options.tartgetPath);
-    const result = shell.exec("yarn install");
-    if (result.code !== 0) {
-      return false;
-    }
-  }
+async function postProcess(options: CliOptions) {
+  const spinner = createSpinner("Creating project...").start();
+  await sleep();
 
-  return true;
+  spinner.success({
+    text: `Hooray!!!😀🥳🎉, type cd ${options.projectName} to start `,
+  });
 }
 
 console.clear();

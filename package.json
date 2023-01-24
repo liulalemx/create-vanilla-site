@@ -8,7 +8,7 @@
     "type": "git",
     "url": "https://github.com/liulalemx/create-vanilla-site.git"
   },
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
   "bin": {
     "create-vanilla-site": "./dist/index.js"
   },
