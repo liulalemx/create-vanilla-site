@@ -9,9 +9,7 @@
     "url": "https://github.com/liulalemx/create-vanilla-site.git"
   },
   "main": "./dist/index.js",
-  "bin": {
-    "create-vanilla-site": "./dist/index.js"
-  },
+  "bin": "./dist/index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
     "build": "tsc && shx rm -rf dist/templates && shx cp -r templates dist"

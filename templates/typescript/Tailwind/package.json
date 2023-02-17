@@ -1,0 +1,16 @@
+{
+  "name": "vanilla-site",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": "app.js",
+  "scripts": {
+    "start": "ts-node src/app.ts"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.6",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.0.3"
+  }
+}

@@ -22,7 +22,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const CURR_DIR = process.cwd();
 const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
 const SKIP_FILES = ["node_modules", ".template.json"];
-const CHOICES = fs.readdirSync(path.join(__dirname, "templates"));
+const TEMPLATE_CHOICES = fs.readdirSync(path.join(__dirname, "templates"));
+const STYLING_CHOICES = fs.readdirSync(
+  path.join(__dirname, "templates", "typescript")
+);
 
 async function welcome(callback: any) {
   figlet(
@@ -57,14 +60,26 @@ function generateTemplate() {
       name: "template",
       type: "list",
       message: "Will you be using JavaScript or TypeScript?",
-      choices: CHOICES,
+      choices: TEMPLATE_CHOICES,
+    },
+    {
+      name: "styling",
+      type: "list",
+      message: "How will you style your project?",
+      choices: STYLING_CHOICES,
     },
   ];
 
   inquirer.prompt(QUESTIONS).then((answers) => {
-    const templateChoice = answers["template"];
     const projectName = answers["name"];
-    const templatePath = path.join(__dirname, "templates", templateChoice);
+    const templateChoice = answers["template"];
+    const stylingChoice = answers["styling"];
+    const templatePath = path.join(
+      __dirname,
+      "templates",
+      templateChoice,
+      stylingChoice
+    );
     const tartgetPath = path.join(CURR_DIR, projectName);
     const options: CliOptions = {
       projectName,
