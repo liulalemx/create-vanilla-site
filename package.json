@@ -1,5 +1,5 @@
 {
-  "name": "create-vanilla-site",
+  "name": "@liulalemx/create-vanilla-site",
   "version": "1.0.0",
   "description": "The best way to start a modern vanilla site",
   "license": "MIT",
@@ -34,5 +34,8 @@
     "inquirer": "^9.1.4",
     "nanospinner": "^1.1.0",
     "shelljs": "^0.8.5"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
