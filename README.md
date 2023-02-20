@@ -14,22 +14,6 @@ Vanilla = html + css/tailwind + js/ts
   <img height=170 src="./cvs-demo.png" alt="CVS demo" />
 </p>
 
-## Installation
-
-Create Vanilla Site is available as a package on NPM:
-
-```bash
-# NPM
-npm install @liulalemx/create-vanilla-site
-
-```
-
-```bash
-# YARN
-yarn add  @liulalemx/create-vanilla-site
-
-```
-
 ## How to run locally
 
 ### Prerequisites
@@ -38,4 +22,6 @@ yarn add  @liulalemx/create-vanilla-site
 
 1. Clone the repository
 1. Run `yarn install`
-1. Run `ts-node src/index.ts` on the root directory
+1. Run `yarn build` on the root directory
+1. Run `npm link` on the root directory
+1. Run `create-static-site`
