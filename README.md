@@ -24,4 +24,4 @@ Vanilla = html + css/tailwind + js/ts
 1. Run `yarn install`
 1. Run `yarn build` on the root directory
 1. Run `npm link` on the root directory
-1. Run `create-vanilla-site`
+1. Run `create-vanilla-site` anywhere on your system
